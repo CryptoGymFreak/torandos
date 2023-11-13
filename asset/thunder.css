@@ -1,0 +1,44 @@
+.box-1 {
+  border: 10px solid blue;
+  width: auto;
+  height: auto;
+  flex:1;
+  margin: 50px;
+}
+
+.box-2 {
+  border: 10px solid blue;
+  width: auto;
+  height: auto;
+  flex:1;
+  margin: 50px;
+}
+
+.box-3 {
+  border: 10px solid blue;
+  width: auto;
+  height: auto;
+  flex:1;
+  margin: 50px;
+}
+
+.box-4 {
+  border: 10px solid blue;
+  width: auto;
+  height: auto;
+  flex: 1;
+  margin: 50px;
+}
+
+.box-5 {
+  border: 10px solid blue;
+  width: auto;
+  height: auto;
+  flex: 1;
+  margin: 50px;
+}
+
+.results {
+    display: flex;
+    justify-content: space-between;
+}
