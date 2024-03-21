@@ -7,13 +7,10 @@ This is a weather app that tracks wherever I want to go. It remembers the previo
 
 - [Screenshot](#screenshot)
 - [Live Link](#live-link)
-- [Contributing](#contributing)
-- [License](#license)
-- [Acknowledgments](#acknowledgments)
 
 ## Screenshot
 
-Explain how to get a copy of your project up and running on the local machine.
+![screenshot](screenshot.png)
 
 ### Live Link
 
