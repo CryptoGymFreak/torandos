@@ -53,7 +53,7 @@ $(document).ready(function() {
                             $(".box-"+boxNum).find(".temp").html("Temp: "+obtainedForecast.main.temp+" celsius");
                             $(".box-"+boxNum).find("humidity").html("Humidity: "+obtainedForecast.main.humidity);
                             $(".box-"+boxNum).find(".wind_speed").html("Wind Speed: "+obtainedForecast.wind.speed);
-                            $(".box-"+boxNum).find(".icon").html('<img src="https://openweathermap.org/img/wn/${obtainedForecast.weather[0].icon}@2x.png">');
+                            $(".box-"+boxNum).find(".icon").html(`<img src="https://openweathermap.org/img/wn/${obtainedForecast.weather[0].icon}@2x.png">`);
 
                             boxNum++;
                         }
