@@ -42,3 +42,11 @@
     display: flex;
     justify-content: space-between;
 }
+
+.history-city {
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.history-city:hover {
+  color: blue;
+}

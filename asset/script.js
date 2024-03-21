@@ -13,6 +13,12 @@ var dayOfWeek = [
     'Saturday',
 ];
 
+function searchFromHistory(event){
+    //alert(event.target.innerHTML + " clicked")
+    $("#cityName").val(event.target.innerHTML)
+    $("#submitButton").click()
+}
+
 // Run when document finishes loading
 $(document).ready(function() {
     // Event listener for the submit button
@@ -56,8 +62,11 @@ $(document).ready(function() {
                             $(".box-"+boxNum).find(".icon").html(`<img src="https://openweathermap.org/img/wn/${obtainedForecast.weather[0].icon}@2x.png">`);
 
                             boxNum++;
-                        }
-                    }
+                        } // for
+
+                        // TODO: LocalStorage; Refresh the left side of the page
+                        $("#history").prepend(`<div class="history-city" onclick="searchFromHistory(event)">${cityName}</div>`);
+                    } // success
                 })
 
             }
