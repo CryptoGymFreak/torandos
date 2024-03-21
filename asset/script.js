@@ -21,6 +21,22 @@ function searchFromHistory(event){
 
 // Run when document finishes loading
 $(document).ready(function() {
+
+    // Function to render previous cities   
+    function renderPreviousCities() {
+        var citiesExist = localStorage.getItem('cities'); // null or string
+        if(citiesExist == null){
+            cities = [];
+        } else {
+            cities = JSON.parse(citiesExist); // converting JSON string into an array
+        }
+        $("#history").html("")
+        for(var i = 0; i < cities.length; i++) {
+            $("#history").prepend(`<div class="history-city" onclick="searchFromHistory(event)">${cities[i]}</div>`);
+        }
+    }
+    renderPreviousCities();
+
     // Event listener for the submit button
     $('#submitButton').on('click', function(event){
         // Prevent the default form submission behavior
@@ -65,7 +81,32 @@ $(document).ready(function() {
                         } // for
 
                         // TODO: LocalStorage; Refresh the left side of the page
-                        $("#history").prepend(`<div class="history-city" onclick="searchFromHistory(event)">${cityName}</div>`);
+                        // What city was just searched
+                        // Does localstorage already have cities
+                        // If not, create an empty array
+                        // If there are cities, add the city to the array if it's not already there
+                        // Save the array back to localstorage
+                        // Refresh the left side of the page
+                        
+                        //cityName
+                        //var cities
+                        var citiesExist = localStorage.getItem('cities'); // null or string
+                        if(citiesExist == null){
+                            cities = [];
+                        } else {
+                            cities = JSON.parse(citiesExist); // converting JSON string into an array
+                        }
+                        if(cities.map(city=>city.toLowerCase()).indexOf(cityName.toLowerCase()) == -1){ // is the city missing in the array?
+                            cities.push(cityName); // add the city to the array
+                        }
+                        localStorage.setItem('cities', JSON.stringify(cities)); // converting array into a JSON string
+
+                        // Refresh the left side of the page
+                        $("#history").html("")
+                        for(var i = 0; i < cities.length; i++) {
+                            $("#history").prepend(`<div class="history-city" onclick="searchFromHistory(event)">${cities[i]}</div>`);
+                        }
+                        //$("#history").prepend(`<div class="history-city" onclick="searchFromHistory(event)">${cityName}</div>`);
                     } // success
                 })
 
