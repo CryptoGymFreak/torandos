@@ -43,23 +43,19 @@ $(document).ready(function() {
                     url: weatherapiurl,
                     success: function(forecast) {
                         // Loop through the forecast data
+                        var boxNum = 1;
                         for(var i = 0; i < forecast.list.length; i += 8){
                             console.log(forecast.list[i]);
                             var obtainedForecast = forecast.list[i];
-                            var obtainedDayOfWeek = dayOfWeek[new Date(obtainedForecast.dt_txt).getDay()];
-                            var children = $(".results").children("div");
-                            // Loop through the children elements
-                            for(var m = 0; m < children.length; m++) {
-                                var theDay = $(children[m]).find('.dayName').html();
-                                // Check if the day matches the obtained day of the week
-                                if (theDay === obtainedDayOfWeek) {
-                                    // Update temperature, humidity, wind speed, and icon in the UI
-                                    $(children[m]).find(".temp").html("Temp: "+obtainedForecast.main.temp+" celsius");
-                                    $(children[m]).find(".humidity").html("Humidity: "+obtainedForecast.main.humidity);
-                                    $(children[m]).find(".wind_speed").html("Wind Speed: "+obtainedForecast.wind.speed);
-                                    $(children[m]).find(".icon").html(`<img src="https://openweathermap.org/img/wn/${obtainedForecast.weather[0].icon}@2x.png">`);
-                                }
-                            }
+                            //var obtainedDayOfWeek = dayOfWeek[new Date(obtainedForecast.dt_txt).getDay()];
+                            var date = obtainedForecast.dt_txt.split(" ")[0]
+                            $(".box-"+boxNum).find(".dayName").html(date);
+                            $(".box-"+boxNum).find(".temp").html("Temp: "+obtainedForecast.main.temp+" celsius");
+                            $(".box-"+boxNum).find("humidity").html("Humidity: "+obtainedForecast.main.humidity);
+                            $(".box-"+boxNum).find(".wind_speed").html("Wind Speed: "+obtainedForecast.wind.speed);
+                            $(".box-"+boxNum).find(".icon").html('<img src="https://openweathermap.org/img/wn/${obtainedForecast.weather[0].icon}@2x.png">');
+
+                            boxNum++;
                         }
                     }
                 })
